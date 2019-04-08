@@ -13,7 +13,9 @@ function getAndPrintHTMLChunks () {
     if(response.statusCode !== 200) {
       console.log('HTTP GET query returned: ' + response.statusCode + " from server");
     } else {
-      console.log('Query successfully responded to!');
+      response.on('data', function(data) {
+        console.log(data + "\n");
+      })
     }
   });
 }
